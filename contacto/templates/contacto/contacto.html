@@ -1,0 +1,42 @@
+{% extends "ProyectoWebApp/base.html" %}
+
+  {% load static %}
+
+  {% block content %}
+
+
+  <div style="width: 300px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 0 10px #ccc;">
+      {% if "valido" in request.GET %}  
+
+        <p style="color: white;"> Mensaje Enviado Correctamente </p>
+
+      {% endif %}
+
+      {% if "novalido" in request.GET %}
+
+      <p style="color: white; text-align: center;"> Mensaje No Enviado Correctamente </p>
+
+
+      {% endif %}
+
+
+      <form action="" method="POST" enctype="multipart/form-data">
+           {% csrf_token %}
+           <h1 style="color: white; text-align: center; margin-bottom: 20px;">Contacto</h1>
+           <div style="margin-bottom: 10px;">
+               <label for="{{miFormulario.nombre.id_for_label}}" style="color: white; display: block; margin-bottom: 5px;">Nombre</label>
+               <input type="text" id="{{miFormulario.nombre.id_for_label}}" name="{{miFormulario.nombre.name}}" style="width: 100%; padding: 5px; border: 1px solid #ccc; border-radius: 3px; box-shadow: inset 0 0 5px #ccc;" required title="Por favor, ingrese su nombre">           </div>
+           <div style="margin-bottom: 10px;">
+               <label for="{{miFormulario.correo.id_for_label}}" style="color: white; display: block; margin-bottom: 5px;">Correo</label>
+               <input type="email" id="{{miFormulario.correo.id_for_label}}" name="{{miFormulario.correo.name}}" style="width: 100%; padding: 5px; border: 1px solid #ccc; border-radius: 3px; box-shadow: inset 0 0 5px #ccc;" required title="Por favor, ingrese su correo electrónico">           </div>
+           <div style="margin-bottom: 10px;">
+               <label for="{{miFormulario.mensaje.id_for_label}}" style="color: white; display: block; margin-bottom: 5px;">Mensaje</label>
+               <textarea id="{{miFormulario.mensaje.id_for_label}}" name="{{miFormulario.mensaje.name}}" style="width: 100%; padding: 5px; border: 1px solid #ccc; border-radius: 3px; box-shadow: inset 0 0 5px #ccc;" rows="4" cols="50"></textarea>
+           </div>
+           <div style="text-align: center;">
+               <button type="submit" style="background-color: #333; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Enviar</button>
+           </div>
+       </form>
+ 
+  </div>
+  {% endblock %}

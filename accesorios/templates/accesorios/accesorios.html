@@ -1,0 +1,44 @@
+{% extends "ProyectoWebApp/base.html" %}
+
+{% load static %}
+
+  {% block content %}
+
+  <div class="container"> 
+
+
+    <div class="row"> 
+      
+      {% for accesorio in accesorios %}
+
+        <div class="col-md-3"> 
+
+          <div class="card" style=" width: 100%; margin: 20px 20px;">
+
+              <img src="{{accesorio.imagen.url}}" class="card-img-top">
+
+              <div class="card-body" style="text-align: center;">  
+
+                <h6 class="card-title"> {{accesorio.nombre}} </h6>
+
+                <p class="card-text"> $ {{accesorio.precio}} </p>
+
+              </div>
+
+            <div class="card-footer text-center"> 
+
+              <a href="" class="btn btn-success"> Agregar al Carrito </a>
+
+            </div>
+
+          </div> <!-- Card que cierra-->
+
+        </div>
+
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+  {% endblock %}
